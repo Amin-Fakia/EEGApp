@@ -83,18 +83,12 @@ class App(ctK.CTk):
             self.edfFile = self.filepath
             self.get_mne_raw()
             self.get_editing_tools()
-            # self.error_label.place(relx=0.5,rely=0.4,anchor=tk.CENTER)
             self.plot_frame.place(relx=0.6,rely=0.48,anchor=tk.CENTER)
-            
-            #self.plot_frame.pack(fill="x",pady=10)
 
-            
-            #self.plot_frame.pack(fill="x")
-            #self.reset_data_btn.place(relx=0.5,rely=0.3,anchor=tk.CENTER)
             
             self.slider.pack(fill=tk.BOTH,padx=70)
             self.get_plot()
-            self.get_edf_btn.pack(fill="x",pady=10)
+            self.get_edf_btn.pack(fill="x")
     def get_plot(self,min_s=0,max_s=5):
         self.ax[0].clear()
         self.ax[1].clear()
@@ -139,21 +133,17 @@ class App(ctK.CTk):
         self.error_label.set_text("Succefully reset the data") 
         pass
     def get_editing_tools(self):
-        #self.editing_frame.place(relx=0.025,rely=0.25, anchor=tk.NW)
         self.editing_frame.pack(fill="x",pady=10)
-        # self.lf_entry.place(relx=0.25,rely=0.1,anchor=tk.CENTER)
-        # self.hf_entry.place(relx=0.75,rely=0.1,anchor=tk.CENTER)
+
         self.freq_frame.pack(pady=10)
-        self.lf_entry.pack(side=tk.LEFT,padx=5)
-        self.hf_entry.pack(side=tk.LEFT,padx=5)
-        # self.apply_bandpass_btn.place(relx=0.5,rely=0.2,anchor=tk.CENTER)
+        self.lf_entry.pack(side=tk.LEFT,padx=7)
+        self.hf_entry.pack(side=tk.LEFT,padx=7)
+
         self.apply_bandpass_btn.pack(pady=10)
         
         self.reset_data_btn.pack(pady=10)
         self.error_label.pack(fill="x",pady=10)
-        #self.lf_slider.place(relx=0.5,rely=0.1,anchor=tk.CENTER)
-        # self.lf_slider.pack()
-        pass   
+
     def get_mne_raw(self):
         self.raw = mne.io.read_raw_edf(self.edfFile,preload=True).copy()
         #filename, _ = os.path.splitext(edfFile)
